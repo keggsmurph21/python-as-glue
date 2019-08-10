@@ -20,6 +20,6 @@ fi
 FILENAME="$(get_filename $1)"
 
 swig -python "$FILENAME.i"
-gcc -c "$FILENAME.c" "${FILENAME}_wrap.c" -I "$PYTHON_INCLUDE" -fPIC
-ld -shared "$FILENAME.o" "${FILENAME}_wrap.o" -o "_$FILENAME.so"
+gcc -fpic -c "$FILENAME.c" "${FILENAME}_wrap.c" -I "$PYTHON_INCLUDE" 
+gcc -shared "$FILENAME.o" "${FILENAME}_wrap.o" -o "_$FILENAME.so"
 
